@@ -1,0 +1,70 @@
+<div class="container">
+<h3>Alta Calificacion</h3>
+
+<div class="col-sm-4">
+    <p>
+        <label>Alumno:</label>
+        <input type="text" class="form-control" [(ngModel)]="calificacion.alumno">
+    </p>
+    <p>
+        <label>Calificacion:</label>
+        <input type="text" class="form-control" [(ngModel)]="calificacion.calificacion">
+    </p>
+    <p>
+        <label>Selecciona la materia:</label>
+        <select [(ngModel)]="calificacion.materia" class="form-control">
+            <option value="Español">Español</option>
+            <option value="Matematicas">Matematicas</option>
+            <option value="Ingles">Ingles</option>
+            <option value="Historia">Historia</option>
+            <option value="Quimica">Quimica</option>
+            <option value="Geografia">Geografia</option>
+        </select>
+    </p>
+
+
+    <table>
+        <tr>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="this.insertarCalificacion()">Insertar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning" (click)="this.updateCalificacion()">Actualizar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" (click)="this.deleteCalificacion(calificacion.id)">Eliminar</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+<br>
+<h3>Listado de calificacion</h3>
+
+<div *ngIf="!calificaciones.length" > No hay calificaciones registradas</div>
+
+<table *ngIf="calificaciones.length" class="table">
+<thead>
+    <tr>
+        <th>ID Calificacion</th>
+        <th>Alumno</th>
+        <th>Calificacion</th>
+        <th>Materia</th>
+        <th>Seleccionar</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let calificacion of calificaciones">
+        <td>{{ calificacion.id }}</td>
+        <td>{{ calificacion.alumno }}</td>
+        <td>{{ calificacion.calificacion }}</td>
+        <td>{{ calificacion.materia }}</td>
+        <td>
+            <button type="button" class="btn btn-primary" (click)="selectCalificacion(calificacion)">Seleccionar</button>
+        </td>
+    </tr>
+</tbody>
+
+</table>
+
+</div>

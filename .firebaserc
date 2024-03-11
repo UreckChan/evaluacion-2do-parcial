@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "evaluacion-c1ca7": {
+      "hosting": {
+        "evaluacion": [
+          "evaluacion-c1ca7"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "evaluacion-c1ca7"
+  }
+}

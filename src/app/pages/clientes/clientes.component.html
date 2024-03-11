@@ -1,0 +1,85 @@
+<div class="container">
+<h3>Alta Cliente</h3>
+
+<div class="col-sm-4">
+    <p>
+        <label>Nombre del cliente:</label>
+        <input type="text" class="form-control" [(ngModel)]="cliente.nombre">
+    </p>
+    <p>
+        <label>RFC:</label>
+        <input type="text" class="form-control" [(ngModel)]="cliente.rfc">
+    </p>
+    <p>
+        <label>Domicilio del cliente:</label>
+        <input type="text" class="form-control" [(ngModel)]="cliente.domicilio">
+    </p>
+    <p>
+        <label>Selecciona el tipo de cliente:</label>
+        <select [(ngModel)]="cliente.tipo" class="form-control">
+            <option  value="1">
+                Activos
+            </option>
+            <option  value="2">
+                Inactivos
+            </option>
+            <option  value="3">
+                Deudores
+            </option>
+            <option  value="0">
+                Sin Definir
+            </option>
+        </select>
+    </p>
+    <table>
+        <tr>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="this.insertarCliente()">Insertar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning" (click)="this.updateCliente()">Actualizar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" (click)="this.deleteCliente(cliente.id)">Eliminar</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br><br>
+<h3>Listado de clientes</h3>
+
+<div *ngIf="!clientes.length" > No hay clientes registrados</div>
+
+<table *ngIf="clientes.length" class="table">
+<thead>
+    <tr>
+
+        <th>Nombre</th>
+        <th>RFC</th>
+        <th>Domicilio</th>
+        <th>Tipo de Cliente</th>
+        <th>Seleccionar</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let cliente of clientes">
+
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.rfc }}</td>
+        <td>{{ cliente.domicilio }}</td>
+        <td>{{ cliente.tipo }}</td>
+        <td>
+            <button type="button" class="btn btn-primary" (click)="selectCliente(cliente)">Seleccionar</button>
+        </td>
+    </tr>
+</tbody>
+
+</table>
+
+<p><strong>Tipos de cliente:</strong></p>
+1: Activos <br>
+2: Inactivos <br>
+3: Deudores <br>
+0: Sin Definir <br>
+
+</div>
